@@ -20,9 +20,9 @@ function App() {
               this.grabDistance = 2
               this.joystickValue = 0
               
-              this.el.addEventListener('triggerdown', (_e) => {
+              el.addEventListener('triggerdown', (_e: Event) => {
                 debugText.setAttribute('value', 'Trigger pressed')
-                const intersectedEls = (el.components.raycaster as any).intersectedEls
+                const intersectedEls = el.components.raycaster.intersectedEls
                 if (intersectedEls && intersectedEls.length > 0) {
                   const grabbable = intersectedEls[0]
                   
@@ -52,12 +52,13 @@ function App() {
                 }
               })
               
-              this.el.addEventListener('axismove', (e: AFrameEvent) => {
-                const axes = e.detail.axis
+              el.addEventListener('axismove', (e: Event) => {
+                const aframeEvent = e as unknown as AFrameEvent
+                const axes = aframeEvent.detail.axis
                 this.joystickValue = axes[3]
               })
               
-              this.el.addEventListener('triggerup', (_e) => {
+              el.addEventListener('triggerup', (_e: Event) => {
                 if (this.grabbed) {
                   if (this.grabbed.body) {
                     this.grabbed.body.wakeUp()
