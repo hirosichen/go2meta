@@ -9,14 +9,14 @@ function App() {
       if (typeof window !== 'undefined') {
         await import('aframe')
         await import('aframe-extras')
-        await import('aframe-physics-system')
+        const physics = await import('aframe-physics-system')
         
         if (window.AFRAME && !window.AFRAME.components['grab-handler']) {
-          AFRAME.registerComponent('grab-handler', {
-            init: function() {
+          window.AFRAME.registerComponent('grab-handler', {
+            init: function(this: AFrameComponent) {
               const el = this.el
               this.grabbed = null
-              const debugText = document.querySelector('#debugText')
+              const debugText = document.querySelector('#debugText') as Element
               this.grabDistance = 2
               this.joystickValue = 0
               
@@ -70,7 +70,7 @@ function App() {
               })
             },
             
-            tick: function() {
+            tick: function(this: AFrameComponent) {
               if (this.grabbed) {
                 if (Math.abs(this.joystickValue) > 0.1) {
                   this.grabDistance -= this.joystickValue * 0.1

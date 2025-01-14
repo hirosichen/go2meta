@@ -10,6 +10,15 @@ declare global {
   }
 }
 
+// 扩展 Element 接口
+interface Element {
+  object3D?: any
+  body?: any
+  components?: any
+  setAttribute(name: string, value: any): void
+  getAttribute(name: string): any
+}
+
 // 扩展 JSX 命名空间
 declare namespace JSX {
   interface IntrinsicElements {
@@ -24,4 +33,11 @@ declare namespace JSX {
     'a-ring': any
     'a-gltf-model': any
   }
+}
+
+// A-Frame 组件类型
+interface AFrameComponent {
+  el: Element
+  tick?: () => void
+  init?: () => void
 } 
