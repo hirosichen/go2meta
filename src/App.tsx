@@ -9,20 +9,20 @@ function App() {
       if (typeof window !== 'undefined') {
         await import('aframe')
         await import('aframe-extras')
-        const physics = await import('aframe-physics-system')
+        await import('aframe-physics-system')
         
         if (window.AFRAME && !window.AFRAME.components['grab-handler']) {
           window.AFRAME.registerComponent('grab-handler', {
             init: function(this: AFrameComponent) {
               const el = this.el
               this.grabbed = null
-              const debugText = document.querySelector('#debugText') as Element
+              const debugText = document.querySelector('#debugText')!
               this.grabDistance = 2
               this.joystickValue = 0
               
-              this.el.addEventListener('triggerdown', (e) => {
+              this.el.addEventListener('triggerdown', (_e) => {
                 debugText.setAttribute('value', 'Trigger pressed')
-                const intersectedEls = el.components.raycaster.intersectedEls
+                const intersectedEls = (el.components.raycaster as any).intersectedEls
                 if (intersectedEls && intersectedEls.length > 0) {
                   const grabbable = intersectedEls[0]
                   
@@ -52,12 +52,12 @@ function App() {
                 }
               })
               
-              this.el.addEventListener('axismove', (e) => {
+              this.el.addEventListener('axismove', (e: AFrameEvent) => {
                 const axes = e.detail.axis
                 this.joystickValue = axes[3]
               })
               
-              this.el.addEventListener('triggerup', (e) => {
+              this.el.addEventListener('triggerup', (_e) => {
                 if (this.grabbed) {
                   if (this.grabbed.body) {
                     this.grabbed.body.wakeUp()

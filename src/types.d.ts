@@ -5,6 +5,7 @@ declare module '*.glb'
 
 // 扩展 Window 接口
 declare global {
+  const AFRAME: any
   interface Window {
     AFRAME: any
   }
@@ -16,7 +17,29 @@ interface Element {
   body?: any
   components?: any
   setAttribute(name: string, value: any): void
-  getAttribute(name: string): any
+  getAttribute(name: string): {
+    x: number
+    y: number
+    z: number
+  }
+}
+
+// A-Frame 组件类型
+interface AFrameComponent {
+  el: Element
+  grabbed: any
+  grabDistance: number
+  joystickValue: number
+  grabOffset: any
+  tick?: () => void
+  init?: () => void
+}
+
+// A-Frame 事件类型
+interface AFrameEvent {
+  detail: {
+    axis: number[]
+  }
 }
 
 // 扩展 JSX 命名空间
@@ -33,11 +56,4 @@ declare namespace JSX {
     'a-ring': any
     'a-gltf-model': any
   }
-}
-
-// A-Frame 组件类型
-interface AFrameComponent {
-  el: Element
-  tick?: () => void
-  init?: () => void
 } 
