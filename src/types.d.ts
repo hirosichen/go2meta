@@ -11,35 +11,50 @@ declare global {
   }
 }
 
+// A-Frame 事件类型
+interface AFrameEvent extends Event {
+  detail: {
+    axis: number[]
+  }
+}
+
+// A-Frame 交叉点类型
+interface Intersection {
+  point: THREE.Vector3
+  distance: number
+}
+
 // 扩展 Element 接口
 interface Element {
   object3D?: any
   body?: any
-  components?: any
+  components?: {
+    raycaster: {
+      intersectedEls: Element[]
+      getIntersection: (el: Element) => Intersection
+      raycaster: THREE.Raycaster
+    }
+  }
   setAttribute(name: string, value: any): void
   getAttribute(name: string): {
     x: number
     y: number
     z: number
   }
+  addEventListener(type: string, listener: (event: Event | AFrameEvent) => void): void
 }
 
 // A-Frame 组件类型
 interface AFrameComponent {
   el: Element
-  grabbed: any
+  grabbed: Element | null
   grabDistance: number
   joystickValue: number
-  grabOffset: any
+  grabOffset: THREE.Vector3 | null
+  sceneDebugText?: Element
+  debugVisible?: boolean
   tick?: () => void
   init?: () => void
-}
-
-// A-Frame 事件类型
-interface AFrameEvent {
-  detail: {
-    axis: number[]
-  }
 }
 
 // 扩展 JSX 命名空间

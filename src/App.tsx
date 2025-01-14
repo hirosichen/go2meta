@@ -157,11 +157,11 @@ function App() {
           if (!AFRAME.components['teleport-debug']) {
             AFRAME.registerComponent('teleport-debug', {
               init: function() {
-                const debugText = document.querySelector('#debugText')
-                const leftHand = document.querySelector('#leftHand')
-                const cameraRig = document.querySelector('#cameraRig')
-                const teleportIndicator = document.querySelector('#teleportIndicator')
-                let intersectionPoint = null
+                const debugText = document.querySelector('#debugText')!
+                const leftHand = document.querySelector('#leftHand')!
+                const cameraRig = document.querySelector('#cameraRig')!
+                const teleportIndicator = document.querySelector('#teleportIndicator')!
+                let intersectionPoint: THREE.Vector3 | null = null
                 
                 leftHand.addEventListener('triggerdown', () => {
                   debugText.setAttribute('value', 'Left Trigger Pressed')
