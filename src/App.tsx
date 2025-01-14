@@ -9,9 +9,9 @@ function App() {
       if (typeof window !== 'undefined') {
         await import('aframe')
         await import('aframe-extras')
-        const physics = await import('aframe-physics-system')
+        await import('aframe-physics-system')
         
-        if (window.AFRAME && !AFRAME.components['grab-handler']) {
+        if (window.AFRAME && !window.AFRAME.components['grab-handler']) {
           AFRAME.registerComponent('grab-handler', {
             init: function() {
               const el = this.el
