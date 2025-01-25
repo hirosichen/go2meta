@@ -5,11 +5,8 @@ Build your own customizable VR experiences with physics, teleportation, and obje
 ## Features
 
 - Full VR environment with physics system
-- Grab and manipulate objects in VR
 - Teleportation system with visual indicators
 - Customizable scenes via .glb model loading
-- Debug system for development
-- Built with A-Frame, React, and TypeScript
 
 ## Installation
 
@@ -58,8 +55,11 @@ Add `teleportable` class to enable teleporting:
 ## Controls
 
 Left Controller:
-- Trigger: Teleport
+- Pad: Locomotion Movement
 - X Button: Debug view
+
+Right Controller:
+- Trigger: Teleportation Movement
 
 ## Why go2meta?
 
