@@ -13,127 +13,89 @@ Build your own customizable VR experiences with physics, teleportation, and obje
 
 ## Quick Start
 
-### Prerequisites
+# go2meta
 
-- Node.js 18+
-- npm 9+
-- A VR headset (Meta Quest recommended)
+Build VR experiences with React, A-Frame, and TypeScript. Import your 3D models and create interactive VR environments with minimal code.
 
-### Installation
+## Features
+
+- VR environment with custom scene loading
+- WebVR-based teleportation system
+- Built with A-Frame and React
+- TypeScript support
+- Development tools with hot reload
+
+## Installation
 
 ```bash
-# Clone the repository
-git clone [your-repo-url]
-cd [your-repo-name]
-
-# Install dependencies
+git clone https://github.com/hirosichen/go2meta.git
+cd go2meta
 npm install
+```
 
-# Start development server with SSL (required for VR)
+## Development
+
+Start development server with SSL (required for VR):
+```bash
 npm run dev:ssl
 ```
 
-Access the experience at `https://localhost:3001`
+Access at `https://localhost:3001`
 
-### Running in Production
+## Customize Your VR Scene
 
-```bash
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-```
-
-## Customizing Your VR Experience
-
-### Replacing the Scene
-
-1. Export your 3D scene as a .glb file
-2. Place it in the `public` directory as `scene.glb`
-3. Adjust the scale/position in the `a-gltf-model` component:
+1. Export your 3D scene as .glb
+2. Place in `public` as `scene.glb`
+3. Configure in `a-gltf-model`:
 
 ```html
 <a-gltf-model
   src="/scene.glb"
   position="0 0 0"
   scale="1 1 1"
-  rotation="0 0 0"
-  static-body="shape: mesh"
   class="teleportable"
   nav-mesh>
 </a-gltf-model>
 ```
 
 ### Teleportation Areas
-
-Add the `teleportable` class to any surface where you want to enable teleportation:
+Add `teleportable` class to enable teleporting:
 
 ```html
 <a-box
   class="teleportable"
-  static-body="shape: box"
+  static-body
   nav-mesh>
-</a-box>
-```
-
-### Interactive Objects
-
-Make objects grabbable by adding the `grabbable` class:
-
-```html
-<a-box 
-  class="grabbable"
-  dynamic-body="shape: box; mass: 1">
 </a-box>
 ```
 
 ## Controls
 
-- Left Controller:
-  - Trigger: Teleport
-  - X Button: Toggle debug view
-- Right Controller:
-  - Trigger: Grab objects
-  - Joystick: Adjust grabbed object distance
+Left Controller:
+- Trigger: Teleport
+- X Button: Debug view
 
-## Why Build Your Own?
+## Why go2meta?
 
-- **Full Ownership**: No monthly subscription fees or platform dependencies
-- **Customization**: Complete control over your VR environment
-- **Simple Architecture**: Only 500 lines of core code
-- **Open Source**: Extend and modify as needed
-- **No Lock-in**: Your content stays yours
+- No subscription fees
+- Full customization freedom
+- Simple 500-line codebase
+- Build on open standards
+- Own your content
 
-## Development
+## Requirements
 
-### Debug Mode
+- Node.js 18+
+- npm 9+
+- VR headset (Meta Quest recommended)
 
-Press the X button on the left controller to toggle debug view, showing:
-- Object positions
-- Interaction status
-- Raycast information
+## License
 
-### Project Structure
+MIT
 
-```
-src/
-  ├── App.tsx        # Main VR scene and components
-  ├── components/    # Custom A-Frame components
-  └── assets/        # Static assets
-```
+## Contributing
 
-### Adding Custom Components
-
-Register new A-Frame components in `App.tsx`:
-
-```typescript
-AFRAME.registerComponent('my-component', {
-  init: function() {
-    // Component logic
-  }
-});
-```
+Issues and PRs welcome at [github.com/hirosichen/go2meta](https://github.com/hirosichen/go2meta)
 
 ## License
 
