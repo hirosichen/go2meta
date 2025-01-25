@@ -11,20 +11,6 @@ Build your own customizable VR experiences with physics, teleportation, and obje
 - Debug system for development
 - Built with A-Frame, React, and TypeScript
 
-## Quick Start
-
-# go2meta
-
-Build VR experiences with React, A-Frame, and TypeScript. Import your 3D models and create interactive VR environments with minimal code.
-
-## Features
-
-- VR environment with custom scene loading
-- WebVR-based teleportation system
-- Built with A-Frame and React
-- TypeScript support
-- Development tools with hot reload
-
 ## Installation
 
 ```bash
