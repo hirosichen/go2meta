@@ -78,11 +78,3 @@ Right Controller:
 ## License
 
 MIT
-
-## Contributing
-
-Issues and PRs welcome at [github.com/hirosichen/go2meta](https://github.com/hirosichen/go2meta)
-
-## License
-
-MIT
